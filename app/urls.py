@@ -12,8 +12,8 @@ from app.views import (
 
 
 urlpatterns = [
-    path('', views.CustomerLoginView, name='login'),
-    path('home/', views.home, name='home'),
+    path('', views.home, name='home'),
+    # path('home/', views.home, name='home'),
     path('about/', views.about,name='about'),
     path('morecategory/', views.morecategory,name='morecategory'),
     path('customorders/', views.customorders,name='customorders'),
