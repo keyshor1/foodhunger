@@ -29,7 +29,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 
-@login_required
+
 def home(request):
     try:
         reviews = Review.objects.filter(Q(user=request.user) | Q(status='accepted'))
@@ -50,7 +50,7 @@ def home(request):
     except:
         return render(request, 'app/home.html', {'error': 'An error occurred'})
 
-@login_required
+
 def customorders(request):
     category_choice = "NA"  # or any other value from the CATEGORY_CHOICES tuple
     newarrivals_products = Product.objects.filter(category=category_choice)
@@ -108,7 +108,6 @@ def dishes(request):
 
 
 
-@login_required
 def about(request):
     all_products = Product.objects.all()
     totalitem = 0
@@ -119,7 +118,6 @@ def about(request):
 
 
 
-def morecategory(request):
     totalitem = 0
     if request.user.is_authenticated:
         totalitem = len(Cart.objects.filter(user=request.user))
@@ -230,7 +228,7 @@ def CustomerLoginView(request):
     except Exception as e:
         print(e)
         messages.error(request, 'An error occurred. Please try again later.')
-        return render(request, 'app/error.html')  # Render the error template
+        return render(request, 'app/home.html')  # Render the error template
 
 
 
