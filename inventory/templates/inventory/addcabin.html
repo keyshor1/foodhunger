@@ -1,0 +1,22 @@
+{% extends "inventory/layout.html" %}
+{% load static %}
+
+{% block extra-css %}
+<link rel="stylesheet" href="{% static 'css/Feedback.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<h1 style="margin-left: 45%; margin-top: 2%; font-weight: 700; font-size: 50px; color: #4F4F51; letter-spacing: 2px;">Add Cabin</h1>
+<div class="container">
+    <div class="box" id="cabin">
+        <section id="section" class="hidden">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3 class="sub-heading">Add Cabin</h3>
+                {{ form.as_p }}
+                <button class="btn btn-success w-100" type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "inventory/layout.html" %}
+{% load static %}
+{% block extra-css %}<link rel="stylesheet" href="{% static 'css/Feedback.css' %}" type="text/css">{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-4 font-weight-bold" style="color: #4F4F51; font-size: 50px; letter-spacing: 2px;">Orders</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="customername" style="color: #4F4F51; font-weight: 400; font-size: 16px;">Customer Name:</label>
+                    <input type="text" name="Customer_Name" class="form-control" value="{{ orderplaced.customer.name }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="product" style="color: #4F4F51; font-weight: 400; font-size: 16px;">Product:</label>
+                    <input type="text" name="Product" class="form-control" value="{{ orderplaced.product }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="quantity" style="color: #4F4F51; font-weight: 400; font-size: 16px;">Quantity:</label>
+                    <input type="number" name="Quantity" class="form-control" value="{{ orderplaced.quantity }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="status" style="color: #4F4F51; font-weight: 400; font-size: 16px;">Status:</label>
+                    <input type="text" name="status" class="form-control" value="{{ orderplaced.get_status_display }}" readonly>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'update_orderplaced' orderplaced.id %}" class="btn btn-success btn-sm custom-btn">Edit Order</a>
+                    <a href="{% url 'delete_orderplaced' orderplaced.id %}" class="btn btn-danger btn-sm custom-btn">Delete Order</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

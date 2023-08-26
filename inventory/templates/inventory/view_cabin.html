@@ -1,0 +1,26 @@
+{% extends "inventory/layout.html" %}
+{% load static %}
+{% block extra-css %}
+<link rel="stylesheet" href="{% static 'css/Cabin.css' %}" type="text/css">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-4 font-weight-bold">Cabin Details</h1>
+    <div class="details">
+        <div class="input-box">
+            <div class="form-group">
+                <label for="cabinnumber">Cabin Number:</label>
+                <input type="text" name="cabinnumber" class="form-control" value="{{ cabin.cabinnumber }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="photo">Cabin Photo:</label>
+                <img src="{{ cabin.photo.url }}" alt="{{ cabin.cabinnumber }}" class="img-thumbnail">
+            </div>
+        </div>
+    </div><br>
+    <div class="d-flex justify-content-between btn-group">
+        <a href="{% url 'update_cabin' cabin.id %}" class="btn btn-success btn-sm font-weight-bold">Update Cabin</a>
+        <a href="{% url 'delete_cabin' cabin.id %}" class="btn btn-danger btn-sm font-weight-bold">Delete Cabin</a>
+    </div>
+</div>
+{% endblock %}

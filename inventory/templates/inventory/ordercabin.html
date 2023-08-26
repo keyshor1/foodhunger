@@ -1,0 +1,76 @@
+{% extends "inventory/layout.html" %}
+
+{% block extra-css %}
+<style>
+  .custom-image {
+      max-height: 25rem; /* Adjust the max-height value to your preference */
+      width: 100%; /* Set width to 100% to maintain the aspect ratio */
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<script>
+
+    function openCabinOrderPage(cabinId) {
+        window.location.href="{% url 'view_cabin_orders' 0 %}".replace("0", cabinId);
+    }
+</script> 
+
+<div class="d-flex justify-content-between">
+    <div>
+        <br>
+        <div class="mb-4">
+            <a href="{% url 'add_cabin_order_with_cabin' %}" class="btn btn-success">Add Cabin Order (With Cabin)</a>
+        </div>
+    </div>
+    
+    <div>
+        <br>
+        <form class="d-flex" method="GET" action="{% url 'searchproduct' %}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchproduct">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-2 border-end card-body-animation-left">
+            <h3>Welcome <span class="text-capitalize">{{ request.user }}</span></h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="{% url 'cabin' %}" class="btn btn-outline-success w-100">
+                        Cabin
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'ordercabin' %}" class="btn btn-outline-success w-100">
+                        Cabin Orders
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="col-sm-10">
+            <section class="gallery" id="gallery">
+                <h1 class="heading text-center">Cabin Orders</h1><br>
+                <div class="row row-cols-1 row-cols-md-3">
+                    {% for cabin in cabins %}
+                    <div class="col mb-4">
+                        <a href="javascript:void(0);" style="text-decoration: none;" onclick="openCabinOrderPage('{{ cabin.id }}')">
+                            <div class="box">
+                                <div class="content">
+                                    <img src="{{ cabin.photo.url }}" alt="{{ cabin.cabinnumber }}" class="img-fluid custom-image">
+                                    <h3>{{ cabin.cabinnumber }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

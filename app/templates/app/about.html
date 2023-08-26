@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block link %}<link rel="stylesheet" href="{% static 'app/css/home.css' %}" />{% endblock link %}
+
+{% block about %}
+<section class="about" id="about">
+
+    <div class="container">
+        <div class="row align-items-center">
+           <div class="col-md-6">
+              <img src="{% static 'app/images/banner/about1.jpg' %}" class="w-100" alt="">
+           </div>
+           <div class="col-md-6">
+              <span>Why Choose Us?</span>
+              <h3 class="title">The Best Food Delivery App in Town</h3>
+              <p>Looking for a reliable and convenient food delivery service? Look no further than Food Hunger! Our easy-to-use app allows you to order food from your favorite local restaurants and have it delivered straight to your door.</p>
+              <div class="icons-container">
+                 <div class="icons">
+                    <i class="fas fa-hamburger fa-2x"></i><br>
+                    <h2>Wide Variety of Options</h2>
+                 </div>
+                 <div class="icons">
+                    <i class="fas fa-shipping-fast fa-2x"></i><br>
+                    <h2>Fast and Free Delivery</h2>
+                 </div>
+                 <div class="icons">
+                    <i class="fas fa-headset fa-2x"></i><br>
+                    <h2>24/7 Customer Support</h2>
+                 </div>
+              </div>
+           </div>
+        </div><br><br><hr><br>
+     
+        <div class="row align-items-center">
+           <div class="col-md-6 order-md-2">
+              <img src="{% static 'app/images/banner/about2.jpg' %}" class="w-100" alt="" style="height: 500px;">
+           </div>
+           <div class="col-md-6 order-md-1">
+              <span>About Food Hunger</span>
+              <h3 class="title">We're Passionate About Delivering Delicious Food</h3>
+              <p>At Food Hunger, we believe that everyone deserves access to delicious and healthy food. That's why we partner with the best local restaurants and food providers to bring you a wide variety of options that are both delicious and nutritious.</p>
+              <p>Whether you're looking for a quick and easy meal or a gourmet dining experience, we've got you covered. And with our fast and free delivery, you'll never have to wait long for your food to arrive.</p>
+           </div>
+        </div><br><br><hr><br>
+     
+        <div class="row align-items-center">
+           <div class="col-md-6">
+              <img src="{% static 'app/images/banner/about3.jpg' %}" class="w-100" alt="" style="height: 500px;">
+           </div>
+           <div class="col-md-6">
+              <span>Our Mission</span>
+              <h3 class="title">To Make Delicious Food Accessible to Everyone</h3>
+              <p>Our mission at Food Hunger is simple: to make delicious and healthy food accessible to everyone. We believe that food is one of life's great pleasures, and we're passionate about delivering the best possible dining experience to our customers.</p>
+              <p>Whether you're a busy professional, a student, or a busy parent, we're here to make your life easier by providing fast, convenient, and delicious food delivery services.</p>
+           </div>
+        </div>
+     </div><br><br><hr><br>
+     
+
+</section>
+{% endblock about %}

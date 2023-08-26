@@ -1,0 +1,95 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block link %}<link rel="stylesheet" href="{% static 'app/css/home.css' %}" />{% endblock link %}
+
+{% block morecategory %}
+
+
+<section class="gallery" id="gallery">
+
+    <h1 class="heading"> our gallery </h1><br>
+  
+    <div class="box-container container">
+       <div class="box">
+          <img src="{% static 'app/images/category/drinks.jpg' %}" alt="">
+          <div class="content">
+             <h3>Drnks</h3>
+             <p>Drinks make complete refrest to anyone who like it</p>
+             <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+          </div>
+       </div>
+       <div class="box">
+         <img src="{% static 'app/images/category/breakfast.jpg' %}" alt="">
+         <div class="content">
+            <h3>morning coffee</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+            <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+         </div>
+      </div>
+      <div class="box">
+         <img src="{% static 'app/images/category/lunch.jpg' %}" alt="">
+         <div class="content">
+            <h3>morning coffee</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+            <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+         </div>
+      </div>
+      <div class="box">
+         <img src="{% static 'app/images/category/dinner.jpg' %}" alt="">
+         <div class="content">
+            <h3>morning coffee</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+            <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+         </div>
+      </div>
+       <div class="box">
+          <img src="{% static 'app/images/category/deserts.jpg' %}" alt="">
+          <div class="content">
+             <h3>morning coffee</h3>
+             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+             <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+          </div>
+       </div>
+  
+       <div class="box">
+          <img src="{% static 'app/images/category/platter.jpg' %}" alt="">
+          <div class="content">
+             <h3>morning coffee</h3>
+             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+             <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+          </div>
+       </div>
+  
+       <div class="box">
+          <img src="{% static 'app/images/category/fastfood.jpg' %}" alt="">
+          <div class="content">
+             <h3>morning coffee</h3>
+             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+             <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+          </div>
+       </div>
+  
+       <div class="box">
+          <img src="{% static 'app/images/category/special.jpg' %}" alt="">
+          <div class="content">
+             <h3>morning coffee</h3>
+             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+             <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+          </div>
+       </div>
+  
+       <div class="box">
+          <img src="{% static 'app/images/category/newarrivals.jpg' %}" alt="">
+          <div class="content">
+             <h3>morning coffee</h3>
+             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, dolore?</p>
+             <a href="{% url 'category' 'DR' %}" class="link-btn">Drinks items</a>
+          </div>
+       </div>
+    </div><br>
+    <br><br><hr><br>
+  
+  </section>
+
+{% endblock morecategory %}

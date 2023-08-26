@@ -1,0 +1,51 @@
+{% extends "../layout.html" %}
+
+{% block content %}
+<script>
+    function openNewPage() {
+        window.location.href = "{% url 'addReview' %}";
+    }
+</script>
+
+</br>
+</br>
+
+<form class="d-flex" method="GET" action="{% url 'reviewsearch' %}">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="reviewsearch">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+<div class="form-group pt-4">
+    <button class="btn btn-outline-success" onclick="openNewPage()">Add Feedback</button>
+</div>
+
+</br>
+</br>
+
+<div class="content-section">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in searchreview %}
+            <tr style="cursor: pointer;" onclick="window.location = '{% url 'view_review' i.id %}'">
+                <th scope="row">
+                    {{ forloop.counter }}
+                </th>
+                <td>
+                    {{ i.Customer_Name }}
+                </td>
+                <td>
+                    {{ i.Date }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

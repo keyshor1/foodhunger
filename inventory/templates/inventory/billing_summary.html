@@ -1,0 +1,28 @@
+{% extends "inventory/layout.html" %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="heading text-center">Billing Summary</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cabin Number</th>
+                <th>Billing Date and Time</th>
+                <th>Grand Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in billing_summary %}
+            <tr>
+                <td>{{ entry.cabin__cabinnumber }}</td>
+                <td>{{ entry.billing_datetime_truncated|date:"M. d, Y, g:i A" }}</td>
+                <td>Rs {{ entry.total_price_sum }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2" class="text-right"><strong>Grand Total:</strong></td>
+                <td><strong>Rs {{ grand_total_price }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

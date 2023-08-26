@@ -1,0 +1,74 @@
+{% extends "inventory/layout.html" %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block content %}
+<div class="container my-5">
+ <div class="row">
+ <h3>Welcome {{request.user}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'orders' %}" class="btn btn-outline-success w-100">Orders</a></li>
+   </ul>
+   <form class="d-flex" method="GET" action="{% url 'searchorderplaced' %}">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchorderplaced">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+  </div>
+  <div class="col-sm-9 offset-sm-1">
+    {% for op in searchorderplaced %}
+    <a style = "curser: pointer; curser: hand;" onclick="window.location = '{% url 'view_orderplaced' op.id %}'">
+        <div class="row shadow-sm mb-3">
+            <div class="col-sm-2 card-body-animation-left" style="max-height: 100px; max-width: 200px;">
+                <img src="{{op.product.product_image.url}}" alt="" srcset="" class="img-fluid" style="height: 100px; width: 200px; object-fit: cover;">
+            </div>
+            
+            
+            <div class="col-sm-7 card-body-animation-left">
+                <p style="text-transform: capitalize;">User: {{op.user}}</p>
+                <p>Product: {{op.product.title}}</p>
+                <p>Quantity: {{op.quantity}}</p>
+                <p>Price: {{op.total_cost}}</p>
+                <p>Order time: {{op.ordered_date}}
+            </div>
+            <div class="col-sm-3 fw-bold card-body-animation-right">
+                <p>Order Status: {{op.status}}</p>
+                {% if op.status == 'Pending' %}
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 5%" aria-valuenow="500" aria-valuemin="0" aria-valuemax="10">
+                </div>
+            </div>
+            {% endif %}
+                {% if op.status == 'Accepted' %}
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 30%" aria-valuenow="500" aria-valuemin="0" aria-valuemax="10">
+                </div>
+            </div>
+            {% endif %}              
+            {% if op.status == 'Packed' %}
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: 50%" aria-valuenow="500" aria-valuemin="0" aria-valuemax="10">
+                </div>
+            </div>
+            {% endif %}
+
+            {% if op.status == 'On The Way' %}
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="10">
+                </div>
+            </div>
+            {% endif %}
+
+            {% if op.status == 'Delivered' %}
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="10">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</a>
+{% endfor %}
+  </div>
+ </div>
+</div>
+{% endblock content %}

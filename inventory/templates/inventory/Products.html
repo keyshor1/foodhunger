@@ -1,0 +1,57 @@
+{% extends "inventory/layout.html" %}
+{% block content %}
+<script>
+    function openNewPage(){
+        window.location.href="{% url 'add_product' %}";
+    }
+</script> 
+
+<div class="d-flex justify-content-between">
+    <div>
+        <div class="form-group pt-4">
+            <button class="btn btn-success" onclick="openNewPage()">Add Product</button>
+        </div>
+    </div>
+    
+    <div>
+        <br>
+        <form class="d-flex" method="GET" action="{% url 'searchproduct' %}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchproduct">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="content-section">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Selling Price</th>
+                <th scope="col">Discounted Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr style="cursor: pointer;" onclick="window.location = '{% url 'view_product' product.id %}'">
+                <td scope="row">{{ forloop.counter }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.selling_price }}</td>
+                <td>{{ product.discounted_price }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <img src="{{ product.product_image.url }}" alt="{{ product.title }}" width="100" height="100">
+                </td>
+                <td>{{ product.get_category_display }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

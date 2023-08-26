@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static  'app/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static  'app/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static  'app/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/css/home.css' %}" />
+    {% block link %}{% endblock link %}
+    
+    <title> FoodHunger / {% block title %}{% endblock title %}</title>
+</head>
+<body>
+  
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a href="#" class="logo"><i class="fas fa-utensils"></i> Food Hunger</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if request.user.is_authenticated %}
+              <li class="navbar">
+                <a class="nav-link text-white" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="navbar">
+                <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+              </li>
+              <li class="navbar">
+                <a class="nav-link text-white" href="{% url 'dishes' %}">Dishes</a>
+              </li>
+              <li class="navbar">
+                <a class="nav-link text-white" href="{% url 'reviews' %}">Review</a>
+              </li>
+              <li class="navbar">
+                <a class="nav-link text-white" href="{% url 'customorders' %}">Custom Orders</a>
+              </li>
+              <li class="navbar">
+                <a class="nav-link text-white" class="userprofile" onclick="toggleItems()" href="#">Category</a>
+                {% comment %} <img src="{% static "app/images/logo.png" %}" class="userprofile" onclick="toggleItems()"> {% endcomment %}
+                <div class="sub-items-wrap" id="subitems">
+                    <div class="sub-menu">
+                        <a href="{% url 'category' 'BF' %}" class="sub-menu-link">
+                          <i class="fas fa-utensils fa-2x"></i>
+                            <p>Breakfast</p>
+                            <span>></span>
+                        </a>
+                        <a href="{% url 'category' 'LH' %}" class="sub-menu-link">
+                          <i class="fas fa-utensils fa-2x"></i>
+                            <p>Lunch</p>
+                            <span>></span>
+                        </a>
+                        <a href="{% url 'category' 'DN' %}" class="sub-menu-link">
+                          <i class="fas fa-utensils fa-2x"></i>
+                            <p>Dinner</p>
+                            <span>></span>
+                        </a>
+                        <a href="{% url 'category' 'DT' %}" class="sub-menu-link">
+                          <i class="fas fa-utensils fa-2x"></i>
+                            <p>Desert</p>
+                            <span>></span>
+                        </a>
+                        <a href="{% url 'category' 'DR' %}" class="sub-menu-link">
+                          <i class="fas fa-utensils fa-2x"></i>
+                          <p>Drinks</p>
+                          <span>></span>
+                      </a>
+                      <a href="{% url 'category' 'PT' %}" class="sub-menu-link">
+                        <i class="fas fa-utensils fa-2x"></i>
+                          <p>Platter</p>
+                          <span>></span>
+                      </a>
+                      <a href="{% url 'category' 'FF' %}" class="sub-menu-link">
+                        <i class="fas fa-utensils fa-2x"></i>
+                          <p>Fast Food</p>
+                          <span>></span>
+                      </a>
+                      <a href="{% url 'category' 'PD' %}" class="sub-menu-link">
+                        <i class="fas fa-utensils fa-2x"></i>
+                          <p>Popular Dishes</p>
+                          <span>></span>
+                      </a>
+                      <a href="{% url 'category' 'NA' %}" class="sub-menu-link">
+                        <i class="fas fa-utensils fa-2x"></i>
+                        <p>NewArrivals</p>
+                        <span>></span>
+                    </a>
+                    </div>
+                </div>
+              </li> 
+              {% comment %} <li class="navbar dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Products
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'category' 'BR' %}">Biryani</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'MM' %}">Momo</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'CM' %}">Chowmein</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'DR' %}">Drinks</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'BU' %}">Burger</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'PZ' %}">Pizza</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'FS' %}">Fish</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'FR' %}">Fries</a></li>
+                  <li><a class="dropdown-item" href="{% url 'category' 'NA' %}">NewArrivals</a></li>
+                </ul>
+              </li> {% endcomment %}
+            </ul>
+            <form class="d-flex" role="search" action="/search">
+              <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+
+          <ul class="navbar me-auto mb-1 mb-lg-0">
+            <li class="navbar dropdown mx-2">
+              <a class="nav-link text-white" class="userprofile" onclick="toggleMenu()" href="#"><i class="fas fa-user fa-2x"></i></a>
+              <div class="sub-menu-wrap" id="submenu">
+                  <div class="sub-menu">
+                      <div class="userinfo">
+                          <i class="fas fa-user fa-3x"></i>
+                          <h2><span class="text-capitalize">{{request.user}}</span></h2>
+                      </div>
+                      <hr>
+                      <a href="{% url 'profile' %}" class="sub-menu-link">
+                          <i class="fas fa-user fa-2x"></i>
+                          <p>Profile</p>
+                          <span>></span>
+                      </a>
+                      <a href="{% url 'orders' %}" class="sub-menu-link">
+                          <i class="fas fa-clipboard-list fa-2x"></i>
+                          <p>Orders</p>
+                          <span>></span>
+                      </a>
+                      <a href="{% url 'orderscustom' %}" class="sub-menu-link">
+                        <i class="fas fa-clipboard-list fa-2x"></i>
+                        <p>Custom Orders</p>
+                        <span>></span>
+                    </a>
+                      <a href="{% url 'passwordchange' %}" class="sub-menu-link">
+                          <i class="fas fa-lock fa-2x"></i>
+                          <p>Change Password</p>
+                          <span>></span>
+                      </a>
+                      <a href="{% url 'logout' %}" class="sub-menu-link">
+                          <i class="fas fa-sign-out-alt fa-2x"></i>
+                          <p>Logout</p>
+                          <span>></span>
+                      </a>
+                  </div>
+              </div>
+            </li> 
+            <li class="navbar mx-2">
+                <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>Cart</a>
+            </li>
+            {% else %}
+            <li class="nav-item dropdown mx-2">
+                <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+            </li>
+            <li class="nav-item dropdown mx-2">
+                <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+            </li>
+            <li class="nav-item dropdown mx-2">
+              <a href="{% url 'admin_login' %}" class="nav-link text-white">AdminLogin</a>
+          </li>
+            {% endif %}
+          </ul>
+
+        </div>
+      </nav>
+      
+
+      {% block morecategory %}{% endblock morecategory %}
+      {% block customorders %}{% endblock customorders %}
+      {% block banner-slider %}{% endblock banner-slider %}
+      {% block about %}{% endblock about %}
+      {% block information %}{% endblock information %}
+      {% block main-content %}{% endblock main-content %}
+      {% block review %}{% endblock review %}
+      {% block dishes %}{% endblock dishes %}
+      {% block footer %}{% endblock footer %}
+
+      
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'app/js/all.min.js' %}"></script>
+    <script src="{% static 'app/js/myscript.js' %}"></script>
+    {% block script %}{% endblock script %}
+    
+</body>
+</html>

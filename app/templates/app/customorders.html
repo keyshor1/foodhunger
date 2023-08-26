@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}customorders{% endblock title %}
+
+
+
+{% block customorders %}
+<div class="container">
+    <div class="py-5 text-center bg-success">
+        <h1> customorders</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}<br><br>
+            <input type="submit" class="btn btn-danger w-100" value="Upload">
+        </form>
+    </div>
+</div>
+
+<section class="menu" id="menu">
+    <h3 class="sub-heading">Our Dishes</h3>
+    <h1 class="heading"> New Arrivals </h1>
+    <div class="container box-container">
+      <div class="owl-carousel" id="slider1">
+        {% for prod in newarrivals_products %}
+        <a href="{% url 'product-detail' prod.id %}" class="btn">
+        <div class="box">
+            <img src="{{prod.product_image.url}}" alt="">
+            <h3>{{prod.title}}</h3>
+            <p>{{prod.discounted_price}}</p>
+        </div>
+        </a>
+        {% endfor %}
+    </div>
+  
+  </section>
+{% endblock customorders %}
