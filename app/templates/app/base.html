@@ -29,7 +29,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              {% if request.user.is_authenticated %}
               <li class="navbar">
                 <a class="nav-link text-white" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
@@ -162,17 +161,6 @@
             <li class="navbar mx-2">
                 <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>Cart</a>
             </li>
-            {% else %}
-            <li class="nav-item dropdown mx-2">
-                <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
-            </li>
-            <li class="nav-item dropdown mx-2">
-                <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
-            </li>
-            <li class="nav-item dropdown mx-2">
-              <a href="{% url 'admin_login' %}" class="nav-link text-white">AdminLogin</a>
-          </li>
-            {% endif %}
           </ul>
 
         </div>

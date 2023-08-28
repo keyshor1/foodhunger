@@ -29,7 +29,6 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 
-@login_required
 def home(request):
     try:
         reviews = Review.objects.filter(Q(user=request.user) | Q(status='accepted'))
@@ -50,7 +49,7 @@ def home(request):
     except:
         return render(request, 'app/home.html', {'error': 'An error occurred'})
 
-@login_required
+
 def customorders(request):
     category_choice = "NA"  # or any other value from the CATEGORY_CHOICES tuple
     newarrivals_products = Product.objects.filter(category=category_choice)
@@ -84,12 +83,12 @@ def customorders(request):
     else:
         return redirect('orders')
 
-@login_required
+
 def orderscustom(request):
     orders_custom = Custom_Orders.objects.filter(user=request.user)
     return render(request, 'app/orderscustom.html', locals())
 
-@login_required
+
 def dishes(request):
     biryani_products = Product.objects.filter(category='BF')
     breakfast_products = Product.objects.filter(category='BF')
@@ -108,7 +107,7 @@ def dishes(request):
 
 
 
-@login_required
+
 def about(request):
     all_products = Product.objects.all()
     totalitem = 0
