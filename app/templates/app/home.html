@@ -150,47 +150,62 @@
 
 <!-- menu section starts  -->
 
-<section class="menu" id="menu">
-  <h3 class="sub-heading">Our Dishes</h3>
-  <h1 class="heading"> Platter </h1><br>
-  <div class="container box-container">
-    <div class="owl-carousel" id="slider1">
-      {% for prod in platter_products %}
-      <div class="col mb-4" style="width: 100%; height: 340px;">
-          <a href="{% url 'product-detail' prod.id %}" class="card-link">
-              <div class="card h-100 border-0 shadow-sm">
-                  <img src="{{prod.product_image.url}}" class="card-img-top" alt="{{prod.title}}" style="width: 100%; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">{{prod.title}}</h5>
-                      <div class="card-text text-danger fw-bold mb-2">Rs.{{prod.discounted_price}}/-</div>
-                      <small class="text-muted fw-light text-decoration-line-through">Rs.{{prod.selling_price}}/-</small>
-                  </div>
-              </div>
-          </a>
-      </div>
-  {% endfor %}     
-  </div>
-</div>
-<h1 class="heading"> New Arrivals </h1>
-  <div class="container box-container">
-    <div class="owl-carousel" id="slider1">
-      {% for prod in new_arrivals_products %}
-      <div class="col mb-4" style="width: 100%; height: 350px;">
-          <a href="{% url 'product-detail' prod.id %}" class="card-link">
-              <div class="card h-100 border-0 shadow-sm">
-                  <img src="{{prod.product_image.url}}" class="card-img-top" alt="{{prod.title}}" style="width: 100%; height: 200px;">
-                  <div class="card-body">
-                      <h5 class="card-title">{{prod.title}}</h5>
-                      <div class="card-text text-danger fw-bold mb-2">Rs.{{prod.discounted_price}}/-</div>
-                      <small class="text-muted fw-light text-decoration-line-through">Rs.{{prod.selling_price}}/-</small>
-                  </div>
-              </div>
-          </a>
-      </div>
-  {% endfor %}
-  </div>
+<!-- menu section starts  -->
 
-</section>
+<section class="menu" id="menu">
+   <h3 class="sub-heading">Our Dishes</h3>
+   <h1 class="heading"> New Arrival </h1><br>
+   <div class="container box-container">
+     <div class="owl-carousel" id="slider1">
+       <div class="col mb-4" style="width: 100%; height: 340px;">
+           <a href="#" class="card-link">
+               <div class="card h-100 border-0 shadow-sm">
+                   <img src="{% static 'app/images/product/Baked Bread on Tray.jpg' %}" class="card-img-top" alt="bread" style="width: 100%; height: 200px;">
+                   <div class="card-body">
+                       <h5 class="card-title">Mushroom</h5>
+                       <div class="card-text text-danger fw-bold mb-2">Price : Rs.200/-</div>
+                   </div>
+               </div>
+           </a>
+       </div>
+       <div class="col mb-4" style="width: 100%; height: 340px;">
+        <a href="#" class="card-link">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="{% static 'app/images/product/Barbecues in Charcoal Grill.jpg' %}" class="card-img-top" alt="bread" style="width: 100%; height: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title">Grills</h5>
+                    <div class="card-text text-danger fw-bold mb-2">Price : Rs.300/-</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col mb-4" style="width: 100%; height: 340px;">
+      <a href="#" class="card-link">
+          <div class="card h-100 border-0 shadow-sm">
+              <img src="{% static 'app/images/product/Stir Fry Noodles in Bowl.jpg' %}" class="card-img-top" alt="bread" style="width: 100%; height: 200px;">
+              <div class="card-body">
+                  <h5 class="card-title">Noodles</h5>
+                  <div class="card-text text-danger fw-bold mb-2">Price : Rs.150/-</div>
+              </div>
+          </div>
+      </a>
+  </div>
+  <div class="col mb-4" style="width: 100%; height: 340px;">
+    <a href="#" class="card-link">
+        <div class="card h-100 border-0 shadow-sm">
+            <img src="{% static 'app/images/product/Sliced of Cake.jpg' %}" class="card-img-top" alt="bread" style="width: 100%; height: 200px;">
+            <div class="card-body">
+                <h5 class="card-title">Cake</h5>
+                <div class="card-text text-danger fw-bold mb-2">Price : Rs.100/-</div>
+            </div>
+        </div>
+    </a>
+</div>
+      </div>   
+   </div>
+ 
+ </section>
+
 
 <!-- menu section ends -->
 
@@ -235,7 +250,7 @@
 
 <section class="reviews" id="reviews">
 
-   <h1 class="heading">customers reviews</h1>
+   <h1 class="heading">Feedback</h1>
 
    <div class="box-container container">
       <div class="owl-carousel" id="sliderreview">
@@ -290,44 +305,33 @@
       {% endfor %}
    </div>
    </div>
-   <div class="d-flex justify-content-center align-items-center">
-      <a href="{% url 'reviews' %}" class="btn btn-success w-50 btn-hover">More reviews</a>
-    </div>
 </section>
 
 
 <!-- blogs section starts  -->
 
 <section class="blogs" id="blogs">
-
-  <h1 class="heading"> our daily posts </h1>
-
-  <div class="box-container container">
-   <div class="owl-carousel" id="sliderblogs">
-      {% for prod in breakfast_products %}
-      <a href="{% url 'product-detail' prod.id %}" class="btn">
-     <div class="box" style="width: 100%; height: 700px;"> 
-        <div class="image">
-         <img src="{{prod.product_image.url}}" class="card-img-top" alt="{{prod.title}}" style="width: 100%; height: 300px;">
-        </div>
-        <div class="content">
-           <h3>{{prod.title}}</h3>
-           <h5> Discounted Price : Rs.{{product.discounted_price}}/-</h5>
-           <small class="text-decoration-line-through text-muted fs-5"><del> Selling Price : Rs. {{product.selling_price}}/- </small></del>
-           <br><br><h4>Product Features</h4>           
-        </div>
-        <div class="icons">
-           <span> <i class="fas fa-calendar"></i>{{prod.date}} </span>
-           <span> <i class="fas fa-user"></i> by Admin </span>
-        </div>
-     </div>
-   </a>
-     {% endfor %}
+     
+   <h1 class="heading"> our owner </h1>
+ 
+   <div class="box-container container">
+    <div class="owl-carousel" id="sliderblogs">
+      <div class="box" style="width: 100%; height: 700px;"> 
+         <div class="image">
+          <img src={% static "app/images/banner/about1.jpg" %} class="card-img-top" alt="" style="width: 100%; height: 300px;">
+         </div>
+         <div class="content">
+            <h3>Owner</h3>
+            <h5>Cindrella</h5>
+            <small class="text-decoration-none text-muted fs-5"><del> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci maxime perferendis totam ad commodi libero, dolores, sequi veritatis et corrupti dignissimos molestiae. Culpa cumque, eaque voluptates sit qui ratione dolores?</small></del>
+            <br><br><h4>Bussinesswomen</h4>           
+         </div>
+      </div>
+    </div>
+ 
    </div>
-
-  </div>
-
-</section>
+ 
+ </section>
 
 <!-- blogs section ends -->
 
@@ -365,9 +369,9 @@
  
        <div class="box" id="review">
          <section id="section" class="hidden">
-           <form method="post" action="{% url 'reviewdone' %}">
+           <form method="post" action="#">
              {% csrf_token %}
-             <h3 class="sub-heading">Give Review</h3>
+             <h3 class="sub-heading">Give Feedback</h3>
              <label for="product" >Product:</label>
              <input type="text" id="product" name="product" required><br><br>
              <label for="comment">Comment:</label>
@@ -385,7 +389,7 @@
                <input type="radio" id="star1" name="rate" value="1" />
                <label for="star1" title="1 star">&#9733;</label>
              </div><br><br>
-             <button class="btn btn-success w-100" type="submit">Submit</button>
+             <button class="btn btn-success w-100">Submit</button>
            </form>
          </section>
        </div>

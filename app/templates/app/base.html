@@ -33,67 +33,50 @@
                 <a class="nav-link text-white" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
               <li class="navbar">
-                <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+                <a class="nav-link text-white" href="#about">About Us</a>
               </li>
               <li class="navbar">
-                <a class="nav-link text-white" href="{% url 'dishes' %}">Dishes</a>
-              </li>
-              <li class="navbar">
-                <a class="nav-link text-white" href="{% url 'reviews' %}">Review</a>
-              </li>
-              <li class="navbar">
-                <a class="nav-link text-white" href="{% url 'customorders' %}">Custom Orders</a>
+                <a class="nav-link text-white" href="#dishes">Dishes</a>
               </li>
               <li class="navbar">
                 <a class="nav-link text-white" class="userprofile" onclick="toggleItems()" href="#">Category</a>
                 {% comment %} <img src="{% static "app/images/logo.png" %}" class="userprofile" onclick="toggleItems()"> {% endcomment %}
                 <div class="sub-items-wrap" id="subitems">
                     <div class="sub-menu">
-                        <a href="{% url 'category' 'BF' %}" class="sub-menu-link">
+                        <a href="#" class="sub-menu-link">
                           <i class="fas fa-utensils fa-2x"></i>
                             <p>Breakfast</p>
                             <span>></span>
                         </a>
-                        <a href="{% url 'category' 'LH' %}" class="sub-menu-link">
+                        <a href="#" class="sub-menu-link">
                           <i class="fas fa-utensils fa-2x"></i>
                             <p>Lunch</p>
                             <span>></span>
                         </a>
-                        <a href="{% url 'category' 'DN' %}" class="sub-menu-link">
+                        <a href="#" class="sub-menu-link">
                           <i class="fas fa-utensils fa-2x"></i>
                             <p>Dinner</p>
                             <span>></span>
                         </a>
-                        <a href="{% url 'category' 'DT' %}" class="sub-menu-link">
+                        <a href="#" class="sub-menu-link">
                           <i class="fas fa-utensils fa-2x"></i>
                             <p>Desert</p>
                             <span>></span>
                         </a>
-                        <a href="{% url 'category' 'DR' %}" class="sub-menu-link">
+                        <a href="#" class="sub-menu-link">
                           <i class="fas fa-utensils fa-2x"></i>
                           <p>Drinks</p>
                           <span>></span>
                       </a>
-                      <a href="{% url 'category' 'PT' %}" class="sub-menu-link">
+                      <a href="#" class="sub-menu-link">
                         <i class="fas fa-utensils fa-2x"></i>
                           <p>Platter</p>
                           <span>></span>
                       </a>
-                      <a href="{% url 'category' 'FF' %}" class="sub-menu-link">
+                      <a href="#" class="sub-menu-link">
                         <i class="fas fa-utensils fa-2x"></i>
                           <p>Fast Food</p>
                           <span>></span>
-                      </a>
-                      <a href="{% url 'category' 'PD' %}" class="sub-menu-link">
-                        <i class="fas fa-utensils fa-2x"></i>
-                          <p>Popular Dishes</p>
-                          <span>></span>
-                      </a>
-                      <a href="{% url 'category' 'NA' %}" class="sub-menu-link">
-                        <i class="fas fa-utensils fa-2x"></i>
-                        <p>NewArrivals</p>
-                        <span>></span>
-                    </a>
                     </div>
                 </div>
               </li> 
@@ -114,7 +97,7 @@
                 </ul>
               </li> {% endcomment %}
             </ul>
-            <form class="d-flex" role="search" action="/search">
+            <form class="d-flex" role="search" action="#">
               <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
@@ -135,22 +118,22 @@
                           <p>Profile</p>
                           <span>></span>
                       </a>
-                      <a href="{% url 'orders' %}" class="sub-menu-link">
+                      <a href="#" class="sub-menu-link">
                           <i class="fas fa-clipboard-list fa-2x"></i>
                           <p>Orders</p>
                           <span>></span>
                       </a>
-                      <a href="{% url 'orderscustom' %}" class="sub-menu-link">
+                      <a href="#" class="sub-menu-link">
                         <i class="fas fa-clipboard-list fa-2x"></i>
                         <p>Custom Orders</p>
                         <span>></span>
                     </a>
-                      <a href="{% url 'passwordchange' %}" class="sub-menu-link">
+                      <a href="#" class="sub-menu-link">
                           <i class="fas fa-lock fa-2x"></i>
                           <p>Change Password</p>
                           <span>></span>
                       </a>
-                      <a href="{% url 'logout' %}" class="sub-menu-link">
+                      <a href="#" class="sub-menu-link">
                           <i class="fas fa-sign-out-alt fa-2x"></i>
                           <p>Logout</p>
                           <span>></span>
@@ -159,7 +142,7 @@
               </div>
             </li> 
             <li class="navbar mx-2">
-                <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>Cart</a>
+                <a href="#" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>Cart</a>
             </li>
           </ul>
 
